@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { PieChart } from '@mui/x-charts/PieChart';
+import MarketoverView from './MarketoverView';
+import { useSpring, animated } from '@react-spring/web';
 export default function ChartsOverviewDemo() {
     // Initial data for "Quarterly" (default selection)
+    const networkChartAnimation = useSpring({
+        from: { transform: 'translateX(-100%)' },
+        to: { transform: 'translateX(0)' },
+        config: { tension: 100, friction: 50 },
+      });
+      const teamChartAnimation = useSpring({
+        from: { transform: 'translateX(100%)' },
+        to: { transform: 'translateX(0)' },
+        config: { tension: 100, friction: 50 },
+      });
+    
     const initialData = {
         labels: ['Q1', 'Q2', 'Q3', 'Q4'],
         data: [5000, 6000, 3500, 2500],
@@ -176,12 +189,14 @@ export default function ChartsOverviewDemo() {
                                     <option value="yearly">Yearly</option>
                                 </select>
                             </div>
+                            <animated.div style={networkChartAnimation}>
                             <BarChart
                                 series={[{ data: teamData.data }]}
                                 height={290}
                                 xAxis={[{ data: teamData.labels, scaleType: 'band' }]}
                                 margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
                             />
+                             </animated.div>
                         </div>
 
                         <div className="border-t-2 border-slate-500">
@@ -217,12 +232,14 @@ export default function ChartsOverviewDemo() {
                                     <option value="yearly">Yearly</option>
                                 </select>
                             </div>
+                            <animated.div style={teamChartAnimation}>
                             <BarChart
                                 series={[{ data: networkData.data }]}
                                 height={290}
                                 xAxis={[{ data: networkData.labels, scaleType: 'band' }]}
                                 margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
                             />
+                            </animated.div>
                             <div className="border-t-2 border-slate-500">
                                 <div className="flex">
                                     <p className="text-neutral-950 mr-2 mt-2">Registered Co-Ownership:</p>
@@ -269,12 +286,14 @@ export default function ChartsOverviewDemo() {
                                         <option value="yearly">Yearly</option>
                                     </select>
                                 </div>
+                                <animated.div style={networkChartAnimation}>
                                 <PieChart
                                    series={[{ data: myTeamData[selectedTeamPeriod] }]}
                                    height={200}
                                     
                                   
                                 />
+                                </animated.div>
                             </div>
 
                             <div className="border-t-2 border-slate-500">
@@ -309,10 +328,12 @@ export default function ChartsOverviewDemo() {
                                     </select>
 
                                 </div>
+                                <animated.div style={teamChartAnimation}>
                                 <PieChart
                                     series={[{ data: myNetworkData[selectedNetworkPeriod] }]}
                                     height={200}
                                 />
+                                </animated.div>
                                 <div className="border-t-2 border-slate-500">
                                     <div className="flex">
                                         <p className="text-neutral-950 mr-2 mt-2">Registered Co-Ownership:</p>
@@ -329,6 +350,7 @@ export default function ChartsOverviewDemo() {
                     </div>
                 </div>
             </div>
+            <MarketoverView/>
         </div>
     );
 }
