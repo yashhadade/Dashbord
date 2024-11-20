@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ChartsOverviewDemo from './ChartsOverViewDemo';
 
 const Dashbord = () => {
  
@@ -59,6 +60,7 @@ const Dashbord = () => {
           </div>
         </div>
       </div>
+      <ChartsOverviewDemo/>
     </div>
   );
 };
