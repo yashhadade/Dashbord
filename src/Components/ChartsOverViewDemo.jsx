@@ -4,7 +4,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import MarketoverView from './MarketoverView';
 import { useSpring, animated } from '@react-spring/web';
 export default function ChartsOverviewDemo() {
-    // Initial data for "Quarterly" (default selection)
+  
     const networkChartAnimation = useSpring({
         from: { transform: 'translateX(-100%)' },
         to: { transform: 'translateX(0)' },
@@ -21,16 +21,16 @@ export default function ChartsOverviewDemo() {
         data: [5000, 6000, 3500, 2500],
     };
 
-    // State for "My Team" chart
+    
     const [teamData, setTeamData] = useState(initialData);
     const [selectedPeriodTeam, setSelectedPeriodTeam] = useState('quarterly');
 
-    // State for "My Network" chart
+    
     const [networkData, setNetworkData] = useState(initialData);
     const [selectedPeriodNetwork, setSelectedPeriodNetwork] = useState('quarterly');
     const [selectedTeamPeriod, setSelectedTeamPeriod] = useState("quarterly");
     const [selectedNetworkPeriod, setSelectedNetworkPeriod] = useState("quarterly");
-    // Handle period change for "My Team"
+    
     const handleTeamPeriodChange = (e) => {
         setSelectedTeamPeriod(e.target.value);
       };
@@ -87,7 +87,7 @@ export default function ChartsOverviewDemo() {
       { id: 3, value: 25, label: 'Level 4' },
     ],
   };
-      // Handler for period change (My Network)
+      
       const handleNetworkPeriodChange = (e) => {
         setSelectedNetworkPeriod(e.target.value);
       };
@@ -99,25 +99,25 @@ export default function ChartsOverviewDemo() {
             case 'yearly':
                 setTeamData({
                     labels: ['2021', '2022', '2023', '2024'],
-                    data: [5000, 6000, 3500, 2500], // Example yearly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'quarterly':
                 setTeamData({
                     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    data: [5000, 6000, 3500, 2500], // Example quarterly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'monthly':
                 setTeamData({
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    data: [5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500], // Example monthly data
+                    data: [5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'weekly':
                 setTeamData({
                     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                    data: [5000, 6000, 3500, 2500], // Example weekly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             default:
@@ -126,7 +126,7 @@ export default function ChartsOverviewDemo() {
         }
     };
 
-    // Handle period change for "My Network"
+   
     const handlePeriodChangeNetwork = (event) => {
         const selectedValue = event.target.value;
         setSelectedPeriodNetwork(selectedValue);
@@ -135,25 +135,25 @@ export default function ChartsOverviewDemo() {
             case 'yearly':
                 setNetworkData({
                     labels: ['2021', '2022', '2023', '2024'],
-                    data: [5000, 6000, 3500, 2500], // Example yearly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'quarterly':
                 setNetworkData({
                     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    data: [5000, 6000, 3500, 2500], // Example quarterly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'monthly':
                 setNetworkData({
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    data: [5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500], // Example monthly data
+                    data: [5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500, 5000, 6000, 3500, 2500], 
                 });
                 break;
             case 'weekly':
                 setNetworkData({
                     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                    data: [5000, 6000, 3500, 2500], // Example weekly data
+                    data: [5000, 6000, 3500, 2500], 
                 });
                 break;
             default:
@@ -165,19 +165,19 @@ export default function ChartsOverviewDemo() {
     return (
         <div className="flex-col">
             <div className="flex-col p-7 bg-gray-100 rounded-lg mt-2">
-                {/* My Team Section */}
+                
                 <div>
                     <h1 className="flex justify-start text-4xl text-slate-500 border-b-2 border-slate-500">
                         Sales
                     </h1>
                 </div>
                 <div className="flex max-600:flex-col">
-                    {/* My Team */}
+                    
                     <div className="w-[49%] max-600:w-[99%] bg-gray-300 mt-2 p-3 rounded-md mr-2">
                         <div className="flex-col">
                             <h3 className="text-xl mt-2">My Team</h3>
                             <div className="flex justify-end">
-                                {/* Dropdown for selecting time period for "My Team" */}
+                                
                                 <select
                                     onChange={handlePeriodChangeTeam}
                                     value={selectedPeriodTeam}
@@ -215,12 +215,12 @@ export default function ChartsOverviewDemo() {
                         </div>
                     </div>
 
-                    {/* My Network */}
+                  
                     <div className="w-[49%] max-600:w-[99%] bg-gray-300 mt-2 p-3 rounded-md">
                         <div className="flex-col">
                             <h3 className="text-xl mt-2">My Network</h3>
                             <div className="flex justify-end">
-                                {/* Dropdown for selecting time period for "My Network" */}
+                                
                                 <select
                                     onChange={handlePeriodChangeNetwork}
                                     value={selectedPeriodNetwork}
@@ -262,19 +262,19 @@ export default function ChartsOverviewDemo() {
 
             <div>
                 <div className="flex-col p-7 bg-gray-100 rounded-lg mt-2">
-                    {/* My Team Section */}
+                   
                     <div>
                         <h1 className="flex justify-start text-4xl text-slate-500 border-b-2 border-slate-500">
                             Commision
                         </h1>
                     </div>
                     <div className="flex max-600:flex-col">
-                        {/* My Team */}
+                       
                         <div className="w-[49%] max-600:w-[99%] bg-gray-300 mt-2 p-3 rounded-md mr-2">
                             <div className="flex-col">
                                 <h3 className="text-xl mt-2">My Team</h3>
                                 <div className="flex justify-end">
-                                    {/* Dropdown for selecting time period for "My Team" */}
+                                  
                                     <select
                                         onChange={handleTeamPeriodChange}
                                         value={selectedTeamPeriod}
@@ -310,12 +310,12 @@ export default function ChartsOverviewDemo() {
                             </div>
                         </div>
 
-                        {/* My Network */}
+                     
                         <div className="w-[49%] max-600:w-[99%] bg-gray-300 mt-2 p-3 rounded-md">
                             <div className="flex-col">
                                 <h3 className="text-xl mt-2">My Network</h3>
                                 <div className="flex justify-end">
-                                    {/* Dropdown for selecting time period for "My Network" */}
+                                   
                                     <select
                                        onChange={handleNetworkPeriodChange}
                                        value={selectedNetworkPeriod}

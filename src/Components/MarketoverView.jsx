@@ -6,7 +6,7 @@ const MarketOverview = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger the animation when the component is mounted
+  
     setIsVisible(true);
   }, []);
 
